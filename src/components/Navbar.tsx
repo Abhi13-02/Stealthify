@@ -47,7 +47,7 @@ function Navbar() {
             </>
             ) : (
             <Link href="/sign-in">
-                <Button  variant={'outline'}>Login</Button>
+                <Button>Login</Button>
             </Link>
             )}
             <ModeToggle />
