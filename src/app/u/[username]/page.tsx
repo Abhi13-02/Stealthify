@@ -83,21 +83,29 @@ export default function SendMessage() {
 
  const [messages, setMessages] = useState<string>(initialMessageString);
  const [topic, setTopic] = useState<string>('');
+ const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
 
   const fetchSuggestedMessages = async () => {
+    setIsLoadingSuggestions(true);
+    console.log("loading statd", isLoadingSuggestions);
     try {
       const response = await axios.post<ApiResponse>('/api/suggest-messages', {
         topic: topic,
       });
       setMessages(response.data.message);
-      console.log(messages);
       toast({
         title: "your being suggested messages",
         variant: 'default',
       });
     } catch (error) {
-      console.error('Error fetching messages:', error);
       // Handle error appropriately
+      toast({
+        title: "Error fetching messages",
+        variant: 'destructive',
+      });
+    } finally {
+      setIsLoadingSuggestions(false);
+      console.log("loading end" , isLoadingSuggestions);
     }
   };
 
@@ -155,22 +163,30 @@ export default function SendMessage() {
         </div>
         <p className='mt-'>Click on any message below to select it.</p>
         <Card className='pt-5 bg-card shadow-2xl'>
-          <CardContent className="flex flex-col space-y-4">
-            {messages.length === 0 ? (
-              <p>No messages found.</p>
-            ) :
-              parseStringMessages(messages).map((message, index) => (
-                <Button
-                  key={index}
-                  variant="outline"
-                  className="mb-2 text-wrap min-h-fit bg-accent font-mono"
-                  onClick={() => handleMessageClick(message)}
-                >
-                  {message}
-                </Button>
-              ))
-            }
-          </CardContent>
+          {
+            isLoadingSuggestions ? (
+              <div className='flex justify-center items-center p-20'>
+                 <Loader2 className="h-10 w-10 animate-spin" />
+              </div>
+            ) : (
+              <CardContent className="flex flex-col space-y-4">
+              {messages.length === 0 ? (
+                <p>No messages found.</p>
+              ) :
+                parseStringMessages(messages).map((message, index) => (
+                  <Button
+                    key={index}
+                    variant="outline"
+                    className="mb-2 text-wrap min-h-fit bg-accent font-mono"
+                    onClick={() => handleMessageClick(message)}
+                  >
+                    {message}
+                  </Button>
+                ))
+              }
+              </CardContent>
+            )
+          }
         </Card>
       </div>
       <Separator className="my-6" />
