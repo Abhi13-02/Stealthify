@@ -45,7 +45,7 @@ export default function SignUpForm() {
         password: data.password,
       });
 
-      console.log(result);
+      // console.log(result?.error, "result");
   
       if (result?.error) {
         if (result.error === 'CredentialsSignin') {

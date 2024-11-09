@@ -16,15 +16,14 @@ export async function sendVerificationEmail(
     //   react: VerificationEmail({ username, otp: verifyCode }),
     // });
 
-   const transport = nodemailer.createTransport({
-      service: 'gmail',
-      secure: true,
-      port: 465,
+    const transport = nodemailer.createTransport({
+      service: 'SendGrid', // For Mailgun, set 'host' and 'port' instead
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD,
+        user: 'apikey', // for SendGrid, 'user' is 'apikey'
+        pass: process.env.SENDGRID_API_KEY, // set this API key as an environment variable
       },
     });
+    
 
 
     const receiver = {
