@@ -32,7 +32,7 @@ export const runtime = 'edge';
 export async function POST(req: Request) {
   try {
     const { topic } = await req.json();
-    const prompt = `Create a list of three open-ended and direct comments formatted as a single string. Each comment should be separated by '||'. these comments should not be like questions they should be like feedbacks or confessions and keep the messages very short. The topic is  ${topic}`;
+    const prompt = `Create a list of three comments formatted as a single string. Each comment should be separated by '||'. these comments should be like feedbacks or confessions and keep the messages very short if possible. The topic is  ${topic}`;
 
       const { text } = await generateText({
         model: cohere('command-r-plus'),
