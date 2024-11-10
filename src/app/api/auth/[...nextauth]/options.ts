@@ -23,6 +23,7 @@ export const authOptions: NextAuthOptions = {
               { email: credentials.identifier },
               { username: credentials.identifier },
             ],
+            isVerified: true,
           });
           // console.log(user,"ok beo");
           if (!user) {
