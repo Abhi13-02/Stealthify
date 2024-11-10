@@ -111,7 +111,7 @@ export default function SendMessage() {
 
   return (
     <div className="container mx-auto my-3 p-6 bg-background rounded max-w-4xl">
-      <h1 className="text-4xl font-bold mb-8 text-center">
+      <h1 className="  text-2xl sm:text-4xl font-bold mb-8 text-center">
         Send Anonymous Messages to <span className='text-primary border-b-2 border-primary '>{username}</span>
       </h1>
       <Form {...form}>

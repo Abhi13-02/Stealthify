@@ -7,6 +7,7 @@ import { User } from 'next-auth';
 import { Home, LayoutDashboard, Menu, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { ModeToggle } from './ModeToggle';
+import Image from 'next/image';
 
 function Navbar() {
   const { data: session } = useSession();
@@ -20,8 +21,8 @@ function Navbar() {
     <nav className="px-4 w-full md:px-8 py-3 shadow-2xl bg-background border border-border">
       <div className="container mx-auto flex justify-between items-center">
         {/* Brand Name */}
-        <Link href="/" className="text-3xl text-primary font-bold">
-          Stealthify
+        <Link href="/" className="text-3xl text-primary font-bold flex items-center gap-2">
+         <Image src="/image.png" alt="Logo" width={50} height={50} className='rounded-md'/ > Stealthify
         </Link>
 
         {/* Mobile Menu Toggle */}
