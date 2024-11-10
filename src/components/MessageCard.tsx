@@ -56,8 +56,8 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
   return (
     <Card className="card-bordered bg-input">
       <CardHeader>
-        <div className="flex justify-between items-center">
-          <CardTitle className="px-5">{message.content}</CardTitle>
+        <div className="flex gap-2 justify-between items-center">
+          <CardTitle className="sm:px-2">{message.content}</CardTitle>
            <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button >
