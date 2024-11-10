@@ -16,7 +16,7 @@ export async function sendVerificationEmail(
     //   react: VerificationEmail({ username, otp: verifyCode }),
     // });
 
-    const transport = nodemailer.createTransport({
+    const transport = await nodemailer.createTransport({
       service: 'SendGrid', // For Mailgun, set 'host' and 'port' instead
       auth: {
         user: 'apikey', // for SendGrid, 'user' is 'apikey'
@@ -53,15 +53,11 @@ export async function sendVerificationEmail(
     
     
     
-    const result = await transport.sendMail(receiver, (error, info) => {
-      if (error) {
-        console.log(error);
-        return { success: false, message: 'Failed to send verification email.' };
-      }
-      console.log('Email sent: ' + info);
-      return { success: true, message: 'Verification email sent successfully.' };
-    });
+    const result = await transport.sendMail(receiver);
 
+    if(result.rejected.length > 0){
+      return { success: false, message: 'Failed to send verification email.' }; 
+    }
 
     console.log(result, " hiiiii")
 
