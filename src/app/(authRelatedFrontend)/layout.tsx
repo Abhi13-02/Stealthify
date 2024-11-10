@@ -11,9 +11,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-      <body>
+      <div>
         <HomeBtn />
         {children}
-      </body>
+      </div>
   )
 }

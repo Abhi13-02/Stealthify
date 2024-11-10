@@ -55,6 +55,7 @@ export default function SignUpForm() {
             variant: 'destructive',
           });
         } else {
+          // alert(result.error);
           toast({
             title: 'Error',
             description: result.error,
