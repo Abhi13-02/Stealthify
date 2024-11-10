@@ -9,7 +9,7 @@ import { Message } from '@/model/User';
 import { ApiResponse } from '@/types/ApiResponse';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios, { AxiosError } from 'axios';
-import { Loader2, RefreshCcw } from 'lucide-react';
+import { Link, Loader2, RefreshCcw } from 'lucide-react';
 import { User } from 'next-auth';
 import { useSession } from 'next-auth/react';
 import React, { useCallback, useEffect, useState } from 'react';
@@ -118,7 +118,7 @@ function UserDashboard() {
   };
 
   if (!session || !session.user) {
-    return <div> please Login </div>;
+    return <Link href="/sign-in"> please Login </Link>;
   }
 
   const { username } = session.user as User;

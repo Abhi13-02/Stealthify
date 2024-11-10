@@ -117,7 +117,7 @@ export default function SignUpForm() {
                   Please wait
                 </>
               ) : (
-                'Sign Up'
+                'Sign In'
               )}
             </Button>
             
