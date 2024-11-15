@@ -58,6 +58,11 @@ export default function Home() {
             ))}
           </CarouselContent>
         </Carousel>
+        <div>
+          <Link href="/sign-up">
+            <Button>Get Started</Button>
+          </Link>
+        </div>
       </main>
 
 {/* <HeroHighlight>
