@@ -27,10 +27,13 @@ export async function sendVerificationEmail(
 
 
     const receiver = {
-      from : process.env.EMAIL_USER,
-      to : email,
-      subject : 'Stealthify | Verification Code',
-      html :  `
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: 'Stealthify | Verification Code',
+      headers: {
+        'List-Unsubscribe': `<mailto:${process.env.EMAIL_USER}>`,
+      },
+      html: `
       <!DOCTYPE html>
       <html lang="en">
         <head>
@@ -45,11 +48,16 @@ export async function sendVerificationEmail(
             <h3 style="color: green;">${verifyCode}</h3>
             <p>Please enter this code on the website to verify your email.</p>
             <p>Thank you!</p>
+            <p style="font-size: 12px; color: gray;">
+              Stealthify | Your Company Address | <a href="mailto:${process.env.EMAIL_USER}">Contact Support</a>
+            </p>
+            <p style="font-size: 12px; color: gray;">If you didn’t request this, please ignore this email.</p>
           </div>
         </body>
       </html>
-    ` ,
-    }
+      `,
+    };
+    
     
     
     
