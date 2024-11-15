@@ -34,7 +34,7 @@ const parseStringMessages = (messageString: string): string[] => {
 };
 
 const initialMessageString =
-  "What's your favorite movie?||Do you have any pets?||What's your dream job?";
+  " You’ve got that cool vibe; people notice it! || A little boost in confidence could go a long way! || I love how you bring your ideas to life—keep it up!"
 
 
 export default function SendMessage() {
